@@ -5,34 +5,34 @@ import { ReactNode } from 'react';
 import useIntersectionObserver from '@/hooks/useIntersectionObserver';
 import { useRef } from 'react';
 
-// Container animation with scale and opacity for a smoother entrance
+// Faster, more dynamic 3D-style entrance
 const containerVariants = {
-  hidden: { opacity: 0, scale: 0.95 },
+  hidden: { opacity: 0 },
   visible: {
     opacity: 1,
-    scale: 1,
     transition: {
-      duration: 0.5,
+      duration: 0.3,
       ease: 'easeOut',
       when: 'beforeChildren',
-      staggerChildren: 0.1, // Stagger effect for children
+      staggerChildren: 0.05, // Faster stagger
     },
   },
 };
 
-// Item animation with slight rotation and bounce
+// Item animation with a 3D flip and bounce effect
 const itemVariants = {
-  hidden: { opacity: 0, y: 20, rotate: -5 },
+  hidden: { opacity: 0, y: 30, scale: 0.9, rotateY: -90 },
   visible: {
     opacity: 1,
     y: 0,
-    rotate: 0,
+    scale: 1,
+    rotateY: 0,
     transition: {
-      duration: 0.4,
+      duration: 0.3,
       ease: 'easeOut',
       type: 'spring',
-      stiffness: 100,
-      damping: 10,
+      stiffness: 120,
+      damping: 12,
     },
   },
 };
