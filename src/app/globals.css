@@ -1,0 +1,120 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+  font-family: "Satoshi";
+  src: url("../fonts/Satoshi-Variable.woff2") format("woff2");
+  font-weight: 300 900;
+  font-display: swap;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Inter";
+  src: url("../fonts/Inter-Variable.woff2") format("woff2");
+  font-weight: 100 900;
+  font-display: swap;
+  font-style: normal;
+}
+
+/* --- STYLES FOR COMPONENTS --- */
+
+.light-field-canvas {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: -10;
+  pointer-events: none;
+}
+
+/* 1. Hide the default browser cursor */
+* {
+  cursor: none;
+}
+
+/* 2. Define the cursor's appearance */
+.intelligent-cursor {
+  pointer-events: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 9999;
+  width: 40px;
+  height: 40px;
+  border: 1px solid #00F5D4;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(0, 245, 212, 0.15) 20%, transparent 80%);
+  mix-blend-mode: difference;
+  transition: transform 0.2s ease-out, border-width 0.2s ease-out, background 0.2s ease-out;
+  transform: translate(-50%, -50%) scale(0.5);
+  animation: cursor-pulse 2.5s ease-in-out infinite;
+}
+
+.intelligent-cursor::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 10px;
+  height: 10px;
+  background: #00F5D4;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  box-shadow: 0 0 12px rgba(0, 245, 212, 0.8);
+  transition: transform 0.2s ease-out;
+}
+
+/* Cursor pulse animation */
+@keyframes cursor-pulse {
+  0%, 100% {
+    box-shadow: 0 0 15px rgba(0, 245, 212, 0.3), inset 0 0 8px rgba(0, 245, 212, 0.2);
+  }
+  50% {
+    box-shadow: 0 0 30px rgba(0, 245, 212, 0.6), inset 0 0 15px rgba(0, 245, 212, 0.4);
+  }
+}
+
+/* 3. The "intelligent" part: scale up the cursor on hover */
+body:has(a:hover, button:hover, [data-cursor="pointer"]:hover) .intelligent-cursor {
+  transform: translate(-50%, -50%) scale(1.1);
+  border-width: 2px;
+  background: radial-gradient(circle, rgba(0, 245, 212, 0.25) 20%, transparent 80%);
+  animation: cursor-pulse 1.5s ease-in-out infinite; /* Faster pulse on hover */
+}
+
+body:has(a:hover, button:hover, [data-cursor="pointer"]:hover) .intelligent-cursor::after {
+  transform: translate(-50%, -50%) scale(1.2);
+}
+
+/* Clicking state */
+.intelligent-cursor.clicking {
+  transform: translate(-50%, -50%) scale(0.4);
+  border-width: 3px;
+  background: radial-gradient(circle, rgba(0, 245, 212, 0.3) 20%, transparent 80%);
+  animation: none;
+}
+
+.intelligent-cursor.clicking::after {
+  transform: translate(-50%, -50%) scale(0.8);
+}
+
+body.modal-open {
+  overflow: hidden;
+}
+@keyframes subtle-glow {
+  0%, 100% { text-shadow: 0 0 8px rgba(0, 245, 212, 0.2); }
+  50% { text-shadow: 0 0 16px rgba(0, 245, 212, 0.4); }
+}
+
+/* Change this class name from "hero-cursor span" */
+.hero-glow {
+  animation: subtle-glow 3s ease-in-out infinite;
+}
+.text-accent {
+  color: #00F5D4;
+}
+motion.span {
+  will-change: transform, opacity;
+}
