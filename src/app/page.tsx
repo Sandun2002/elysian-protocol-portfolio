@@ -4,6 +4,7 @@ import Act2_Collective from "./_components/Act2_Collective";
 import Act3_Craft from "./_components/Act3_Craft";
 import Act4_Proof from "./_components/Act4_Proof";
 import Act5_Overture from "./_components/Act5_Overture";
+import Act6_AboutUs from "./_components/Act6_AboutUs";
 import ScrollIndicator from "@/components/ScrollIndicator";
 import HeroTextAnimation from "./_components/HeroTextAnimation"; // 1. Import the new animation component
 
@@ -76,6 +77,14 @@ export default function Home() {
           </div>
           <Act4_Proof />
         </div>
+      </section>
+
+      {/* Act VI: About Us */}
+      <section
+        id="about"
+        className="flex w-full items-center justify-center py-24"
+      >
+        <Act6_AboutUs />
       </section>
 
       {/* Act V: The Overture */}
