@@ -8,6 +8,7 @@ import { useLenis } from '@/components/utils/LenisProvider';
 import Image from 'next/image'; // 1. Import the Image component
 
 const navLinks = [
+  { title: 'About Us', href: '#about' },
   { title: 'Our Team', href: '#collective' },
   { title: 'Our Process', href: '#craft' },
   { title: 'Our Projects', href: '#proof' },
